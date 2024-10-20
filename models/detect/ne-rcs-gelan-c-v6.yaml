@@ -1,0 +1,114 @@
+# YOLOv9
+
+# parameters
+nc: 1  # number of classes
+depth_multiple: 1.0  # model depth multiple
+width_multiple: 1.0  # layer channel multiple
+
+# anchors
+anchors: 3
+
+# gelan backbone
+backbone:
+  [
+   # conv down
+   [-1, 1, RepVGG, [64, 3, 2]],  # 0-P1/2
+
+   # squeeze n excite
+   [-1, 1, SEBlock, [64]],       # 1	
+
+   # New: RepVGG block
+   [-1, 1, RepVGG, [64, 3, 1]],  # 2
+
+   # New: squeeze n excite (SEBlock)
+   [-1, 1, SEBlock, [64]],       # 3
+
+   # New: RepVGG block
+   [-1, 1, RepVGG, [64, 3, 1]],  # 4
+
+   # New: squeeze n excite (SEBlock)
+   [-1, 1, SEBlock, [64]],       # 5
+
+   # conv down
+   [-1, 1, RepVGG, [128, 3, 2]],  # 6-P2/4
+
+   # New: squeeze n excite (SEBlock)
+   [-1, 1, SEBlock, [128]],       # 7
+
+   # New: RepVGG block
+   [-1, 1, RepVGG, [128, 3, 2]],  # 8
+
+   # squeeze n excite
+   [-1, 1, SEBlock, [128]],       # 9
+
+   # elan-1 block
+   [-1, 1, RepNCSPELAN4, [256, 128, 64, 1]],  # 10
+
+   # squeeze n excite (SEBlock) between elan-1 block and avg-conv down
+   [-1, 1, SEBlock, [256]],       # 11
+
+   # avg-conv down
+   [-1, 1, ADown, [256]],  # 12-P3/8
+
+   # elan-2 block
+   [-1, 1, RepNCSPELAN4, [512, 256, 128, 1]],  # 13
+
+   # avg-conv down
+   [-1, 1, ADown, [512]],  # 14-P4/16
+
+   # elan-2 block
+   [-1, 1, RepNCSPELAN4, [512, 512, 256, 1]],  # 15
+
+   # avg-conv down
+   [-1, 1, ADown, [512]],  # 16-P5/32
+
+   # elan-2 block
+   [-1, 1, RepNCSPELAN4, [512, 512, 256, 1]],  # 17
+  ]
+
+# gelan head
+head:
+  [
+   # elan-spp block
+   [-1, 1, SPPELAN, [512, 256]],  # 18
+
+   # up-concat merge
+   [-1, 1, nn.Upsample, [None, 2, 'nearest']],
+   [[-1, 15], 1, Concat, [1]],  # cat backbone P4
+
+   # elan-2 block
+   [-1, 1, RepNCSPELAN4, [512, 512, 256, 1]],  # 21
+
+   # up-concat merge
+   [-1, 1, nn.Upsample, [None, 2, 'nearest']],
+   [[-1, 13], 1, Concat, [1]],  # cat backbone P3
+
+   # elan-2 block
+   [-1, 1, RepNCSPELAN4, [256, 256, 128, 1]],  # 24 (P3/8-small)
+
+   # squeeze n excite (SEBlock) between elan-2 block and avg-conv down
+   [-1, 1, SEBlock, [256]],       # 25
+
+   # avg-conv-down merge
+   [-1, 1, ADown, [256]],
+   [[-1, 21], 1, Concat, [1]],  # cat head P4
+
+   # elan-2 block
+   [-1, 1, RepNCSPELAN4, [512, 512, 256, 1]],  # 28 (P4/16-medium)
+
+   # squeeze n excite (SEBlock) between elan-2 block and avg-conv down
+   [-1, 1, SEBlock, [512]],       # 29
+
+   # avg-conv-down merge
+   [-1, 1, ADown, [512]],
+   [[-1, 18], 1, Concat, [1]],  # cat head P5
+
+   # elan-2 block
+   [-1, 1, RepNCSPELAN4, [512, 512, 256, 1]],  # 32 (P5/32-large)
+
+   # squeeze n excite (SEBlock) before detection
+   [-1, 1, SEBlock, [512]],       # 33
+
+   # detect
+   [[24, 28, 32], 1, DDetect, [nc]],  # DDetect(P3, P4, P5)
+  ]

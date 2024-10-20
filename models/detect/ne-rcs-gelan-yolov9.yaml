@@ -1,0 +1,86 @@
+# YOLOv9
+
+# parameters
+nc: 1  # number of classes
+depth_multiple: 1.0  # model depth multiple
+width_multiple: 1.0  # layer channel multiple
+#activation: nn.LeakyReLU(0.1)
+#activation: nn.ReLU()
+
+# anchors
+anchors: 3
+
+# gelan backbone
+backbone:
+  [
+   # conv down
+   [-1, 1, Conv, [16, 3, 2]],  # 0-P1/2
+
+   # conv down
+   [-1, 1, Conv, [32, 3, 2]],  # 1-P2/4
+
+   # avg-conv down
+   [-1, 1, AConv, [64]],  # 2-P3/8
+
+   # elan-2 block
+   [-1, 1, RepNCSPELAN4, [64, 64, 32, 3]],  # 3
+
+   # avg-conv down
+   [-1, 1, AConv, [96]],  # 4-P4/16
+
+   # elan-2 block
+   [-1, 1, RepNCSPELAN4, [96, 96, 48, 3]],  # 5
+
+   # avg-conv down
+   [-1, 1, AConv, [128]],  # 6-P5/32
+
+   # elan-2 block
+   [-1, 1, RepNCSPELAN4, [128, 128, 64, 3]],  # 7
+  ]
+
+# elan head
+head:
+  [
+   # elan-spp block
+   [-1, 1, SPPELAN, [128, 64]],  # 8
+
+   # up-concat merge
+   [-1, 1, nn.Upsample, [None, 2, 'nearest']],
+   [[-1, 5], 1, Concat, [1]],  # cat backbone P4
+
+   # elan-2 block
+   [-1, 1, RepNCSPELAN4, [96, 96, 48, 3]],  # 10
+
+   # up-concat merge
+   [-1, 1, nn.Upsample, [None, 2, 'nearest']],
+   [[-1, 3], 1, Concat, [1]],  # cat backbone P3
+
+   # elan-2 block
+   [-1, 1, RepNCSPELAN4, [64, 64, 32, 3]],  # 12
+
+   # avg-conv-down merge
+   [-1, 1, AConv, [48]],
+   [[-1, 10], 1, Concat, [1]],  # cat head P4
+
+   # elan-2 block
+   [-1, 1, RepNCSPELAN4, [96, 96, 48, 3]],  # 14 (P4/16-medium)
+
+   # avg-conv-down merge
+   [-1, 1, AConv, [64]],
+   [[-1, 8], 1, Concat, [1]],  # cat head P5
+
+   # elan-2 block
+   [-1, 1, RepNCSPELAN4, [128, 128, 64, 3]],  # 16 (P5/32-large)
+   
+   # elan-spp block
+   [7, 1, SPPELAN, [128, 64]],  # 17
+
+   # up-concat merge
+   [-1, 1, nn.Upsample, [None, 2, 'nearest']],
+   [[-1, 5], 1, Concat, [1]],  # cat backbone P4
+
+   # elan-2 block
+   [-1, 1, RepNCSPELAN4, [96, 96, 48, 3]],  # 19
+
+
+  ]

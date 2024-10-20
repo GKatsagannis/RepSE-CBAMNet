@@ -1,0 +1,72 @@
+# YOLOv9 with Single CBAM Block for Debugging
+
+# parameters
+nc: 1  # number of classes
+
+# anchors
+anchors: 6
+
+# gelan backbone
+backbone:
+  [
+   # Initial convolution
+   [-1, 1, RepVGG, [64, 3, 2]],  # 0-P1/2
+
+   [-1, 1, ResidualBlock, [64, 64]],  # 1
+
+   # Squeeze and Excite block
+   [-1, 1, SEBlock, [64]],       # 2
+
+   # Single CBAM block
+   [-1, 1, CBAM, [64]],          # 3
+
+   # Downsampling
+   [-1, 1, RepVGG, [128, 3, 2]],  # 4-P2/4
+
+   [-1, 1, SEBlock, [128]],       # 5
+
+   [-1, 1, CBAM, [128]],          # 6
+
+   # Further downsampling
+   [-1, 1, RepVGG, [256, 3, 2]],  # 7-P3/8
+
+   [-1, 1, SEBlock, [256]],       # 8
+
+   [-1, 1, ADown, [256]],  # 9-P4/16
+
+   # Final detection head
+   [-1, 1, RepNCSPELAN4, [512, 256, 128, 1]],  # 10
+
+   [-1, 1, CBAM, [512]],          # 11
+
+   [-1, 1, ADown, [512]],  # 12-P5/32
+  ]
+
+# gelan head
+head:
+  [
+   # Initial SPP block
+   [-1, 1, SPPELAN, [512, 256]],  # 13
+
+   # Single CBAM block after SPP
+   [-1, 1, CBAM, [512]],          # 14
+
+   # Upsample and concat
+   [-1, 1, nn.Upsample, [None, 2, 'nearest']],  # Upsample from P5/32 to P4 size
+   [[-1, 9], 1, Concat, [1]],  # Concatenate with P4
+
+   # Process concatenated features
+   [-1, 1, RepNCSPELAN4, [512, 512, 256, 1]],  # 15
+
+   [-1, 1, CBAM, [512]],          # 16
+
+   [-1, 1, nn.Upsample, [None, 2, 'nearest']],  # Upsample from P4/16 to P3 size
+   [[-1, 8], 1, Concat, [1]],  # Concatenate with P3
+
+   [-1, 1, RepNCSPELAN4, [256, 256, 128, 1]],  # 17
+
+   [-1, 1, CBAM, [256]],          # 18
+
+   # Final detect layer
+   [[17], 1, DDetect, [nc]],  # DDetect(P3)
+  ]
