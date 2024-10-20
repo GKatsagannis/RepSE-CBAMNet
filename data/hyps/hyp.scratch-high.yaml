@@ -1,0 +1,32 @@
+# Hyperparameters to induce overfitting
+
+lr0: 0.001  # Reduced initial learning rate for finer updates
+lrf: 0.01  # Final learning rate after OneCycleLR
+momentum: 0.937  # SGD momentum (unchanged)
+weight_decay: 0.0001  # Reduced weight decay to lower regularization
+warmup_epochs: 3.0  # Warmup epochs (unchanged)
+warmup_momentum: 0.8  # Warmup initial momentum (unchanged)
+warmup_bias_lr: 0.1  # Warmup initial bias learning rate (unchanged)
+box: 7.5  # Box loss gain (unchanged)
+cls: 0.5  # Class loss gain (unchanged)
+cls_pw: 1.0  # Class BCELoss positive weight (unchanged)
+obj: 0.7  # Object loss gain (unchanged)
+obj_pw: 1.0  # Object BCELoss positive weight (unchanged)
+dfl: 1.5  # Distribution Focal Loss gain (unchanged)
+iou_t: 0.10  # Lower IoU training threshold to make detection easier
+anchor_t: 5.0  # Anchor-multiple threshold (unchanged)
+# anchors: 3  # Keep the anchors as is or adjust according to needs
+fl_gamma: 0.0  # Focal loss gamma (unchanged)
+hsv_h: 0.015  # HSV-Hue augmentation (unchanged)
+hsv_s: 0.7  # HSV-Saturation augmentation (unchanged)
+hsv_v: 0.4  # HSV-Value augmentation (unchanged)
+degrees: 0.0  # No image rotation
+translate: 0.1  # Image translation (unchanged)
+scale: 0.9  # Image scale (unchanged)
+shear: 0.0  # No image shear
+perspective: 0.0  # No image perspective
+flipud: 0.0  # No vertical flip
+fliplr: 0.0  # No horizontal flip
+mosaic: 0.0  # No mosaic augmentation
+mixup: 0.0  # No mixup augmentation
+copy_paste: 0.3  # Segment copy-paste (unchanged)
