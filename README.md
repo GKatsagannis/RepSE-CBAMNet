@@ -10,8 +10,25 @@ After downloading the repository from GitHub:
 Download both datasets from [IEEEDataPort](https://ieee-dataport.org/documents/brain-tumor-mri-dataset).
 
 ## For the First Dataset
-Instructions for handling the first dataset will go here.
+Download the dataset from the provided link.
 
+### Dataset Preparation
+Unzip the downloaded file.
+
+After unzipping the files, ensure that the final folder architecture is as below. You can either rename the folders after unzipping the data or
+create a folder architecture as below and copy the files to it.
+
+'''
+brain/
+├── train/
+│   ├── images/
+│   └── labels/
+├── val/
+│   ├── images/
+│   └── labels/
+
+If you are executing this code in colab, ensure that the brain folder is placed in mydrive. For our model we used 500 images for training and 201 images 
+for validation.
 
 ## For the Second Dataset
 Download the dataset from the provided link.
