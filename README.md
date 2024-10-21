@@ -23,7 +23,7 @@ Unzip all remaining files in the folder. If they were unzipped inside subfolders
 After unzipping everything, delete the zip files as well.
 Rename the folder to Figshare_dataset.
 The final folder architecture should be:
-
+```
 Figshare_dataset/
 ├── 1.mat
 ├── 2.mat
@@ -31,7 +31,7 @@ Figshare_dataset/
 .
 .
 └── 3064.mat
-
+```
 
 Upload the Figshare_dataset folder to your Google Drive (MyDrive).
 
@@ -55,6 +55,7 @@ Follow these steps:
 Additionally:
 Inside the Folds2 folder, create 5 subfolders named train1, train2, train3, train4, and train5. Each of these should contain empty images and labels subfolders.
 The final folder architecture should look like this:
+```
 MyDrive/
 └── Folds2/
     ├── fold_1/
@@ -87,6 +88,7 @@ MyDrive/
     └── train5/
         ├── images/ (empty)
         └── labels/ (empty)
+```
    
 ### Organizing Training and Validation Sets
 In MyDrive, create a folder named brain2.
@@ -96,6 +98,7 @@ Distribute the dataset as follows:
 1. Place 2,184 images and their corresponding labels in the TRAIN subfolders (images and labels).
 2. Place the remaining 879 images and their corresponding labels in the VAL subfolders.
 The final folder structure should be:
+```
 MyDrive/
 └── brain2/
     ├── TRAIN/
@@ -104,6 +107,7 @@ MyDrive/
     └── VAL/
         ├── images/ (879 image files)
         └── labels/ (879 label files)
+```
 ### Running the Code
 Run the entire "Necessary stuff" section of the Copy of RepSE-CBAMNet_Dat2.ipynb notebook (this is required).
 
