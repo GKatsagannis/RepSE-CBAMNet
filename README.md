@@ -18,7 +18,7 @@ Unzip the downloaded file.
 After unzipping the files, ensure that the final folder architecture is as below. You can either rename the folders after unzipping the data or
 create a folder architecture as below and copy the files to it.
 
-'''
+```plaintext
 brain/
 ├── train/
 │   ├── images/
