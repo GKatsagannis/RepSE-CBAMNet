@@ -26,7 +26,7 @@ brain/
 ├── val/
 │   ├── images/
 │   └── labels/
-
+```
 If you are executing this code in colab, ensure that the brain folder is placed in mydrive. For our model we used 500 images for training and 201 images 
 for validation.
 
