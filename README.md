@@ -20,10 +20,10 @@ create a folder architecture as below and copy the files to it.
 
 ```plaintext
 brain/
-├── train/
+├── TRAIN/
 │   ├── images/
 │   └── labels/
-├── val/
+├── VAL/
 │   ├── images/
 │   └── labels/
 ```
