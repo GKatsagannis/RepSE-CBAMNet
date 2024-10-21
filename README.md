@@ -38,13 +38,13 @@ Upload the Figshare_dataset folder to your Google Drive (MyDrive).
 ### Converting the Dataset to Images and Labels
 Open the RepSE-CBAMNet_Dat2.ipynb file in Google Colab.
 Run the entire "Necessary stuff" section (this is required).
-Navigate to the "Figshare Brain Tumor Dataset" section and execute the following:
-converting image figshare dataset
-connecting to google drive
-create separate dataset based on label
+Navigate to the "Second Brain Tumor Datasett" section and execute the following:
+**converting image figshare dataset**
+**connecting to google drive**
+**create separate dataset based on label**
 The dataset will be saved in MyDrive/Figshare_dataset/brain and will be ready for use.
 
-### Folder Architecture for 5-Fold Cross-Validation
+### Organizing Training and Validation Sets
 Ensure the folder architecture matches ThensiB's setup, with the following modification:
 The Folds folder should be renamed to Folds2.
 Follow these steps:
@@ -90,9 +90,8 @@ MyDrive/
         └── labels/ (empty)
 ```
    
-### Organizing Training and Validation Sets
-In MyDrive, create a folder named brain2.
-Inside brain2, create two subfolders: TRAIN and VAL.
+In MyDrive, create a folder named brain22.
+Inside brain22, create two subfolders: TRAIN and VAL.
 Inside both TRAIN and VAL, create two more subfolders: images and labels.
 Distribute the dataset as follows:
 1. Place 2,184 images and their corresponding labels in the TRAIN subfolders (images and labels).
@@ -108,6 +107,9 @@ MyDrive/
         ├── images/ (879 image files)
         └── labels/ (879 label files)
 ```
-### The rest of the Code
+### RCS-YOLO Preparation
+For the first dataset, results for both RCS-YOLO and RepVGG-GELAN were already available, so no further processing was required. However, for this dataset, new results needed to be generated.
+To utilize RCS-YOLO, we used Ming Kang's repository, which can be accessed from [RCS-YOLO](https://github.com/mkang315/RCS-YOLO). After downloading the repository, rename the folder to RCS-YOLO (if it is not already named as such) and upload it to your Google Drive (MyDrive).
+Next, navigate to the directory /content/drive/MyDrive/RCS-YOLO/data, and place the coco22.yaml file from our repository in this location.
 
 
