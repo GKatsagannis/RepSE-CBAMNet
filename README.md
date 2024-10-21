@@ -36,8 +36,8 @@ Figshare_dataset/
 Upload the Figshare_dataset folder to your Google Drive (MyDrive).
 
 ### Converting the Dataset to Images and Labels
-Open the Copy of yolo.ipynb file in Google Colab.
-Run the entire "Necessary stuff" section.
+Open the RepSE-CBAMNet_Dat2.ipynb file in Google Colab.
+Run the entire "Necessary stuff" section (this is required).
 Navigate to the "Figshare Brain Tumor Dataset" section and execute the following:
 converting image figshare dataset
 connecting to google drive
@@ -108,6 +108,6 @@ MyDrive/
         ├── images/ (879 image files)
         └── labels/ (879 label files)
 ```
-### Running the Code
-Run the entire "Necessary stuff" section of the Copy of RepSE-CBAMNet_Dat2.ipynb notebook (this is required).
+### The rest of the Code
+
 
