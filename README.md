@@ -107,20 +107,17 @@ MyDrive/
    
 In MyDrive, create a folder named *brain22*.
 Inside *brain22*, create two subfolders: *TRAIN* and *VAL*.
-Inside both *TRAIN* and *VAL*, create two more subfolders: *images* and *labels*.
 Distribute the dataset as follows:
-1. Place 2,184 images and their corresponding labels in the *TRAIN* subfolders (images and labels).
-2. Place the remaining 879 images and their corresponding labels in the *VAL* subfolders.
+1. Place 2,184 images and their corresponding labels in the *TRAIN* subfolder.
+2. Place the remaining 879 images and their corresponding labels in the *VAL* subfolder.
 The final folder structure should be:
 ```
 MyDrive/
 └── brain2/
-    ├── TRAIN/
-    │   ├── images/ (2,184 image files)
-    │   └── labels/ (2,184 label files)
+    ├── TRAIN/ 
+    │   └── (2,184 image and 2,184 label files)
     └── VAL/
-        ├── images/ (879 image files)
-        └── labels/ (879 label files)
+        └── (879 image and 879 label files)
 ```
 ### RCS-YOLO Preparation
 For the first dataset, results for both RCS-YOLO and RepVGG-GELAN were already available, so no further processing was required. However, for this dataset, new results needed to be generated.
