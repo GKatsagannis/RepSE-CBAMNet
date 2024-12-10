@@ -120,7 +120,7 @@ MyDrive/
         └── (879 image and 879 label files)
 ```
 ### RCS-YOLO Preparation
-For the first dataset, results for both RCS-YOLO and RepVGG-GELAN were already available, so no further processing was required. However, for this dataset, new results needed to be generated.
+For the first dataset, results for both RCS-YOLO and RepVGG-GELAN were already available, so no further processing was needed. However, for this dataset, new results needed to be generated.
 To utilize RCS-YOLO, we used Ming Kang's repository, which can be accessed from [RCS-YOLO](https://github.com/mkang315/RCS-YOLO). After downloading the repository, rename the folder to RCS-YOLO (if it is not already named as such) and upload it to your Google Drive (MyDrive).
 Next, navigate to the directory */content/drive/MyDrive/RCS-YOLO/data*, and place the *coco22.yaml* file from our repository in this location.
 
