@@ -9,6 +9,8 @@ After downloading the repository from GitHub:
 
 Download the Br35H and figshare datasets from [IEEEDataPort](https://ieee-dataport.org/documents/brain-tumor-mri-dataset). From now on Br35H will be refered to as the First Dataset and figshare as the Second Datase.
 
+Copy the all four coco.yalm (*coco.yaml*, *coco1.yaml*, *coco2.yaml* and *coco3.yaml*) files from */content/drive/MyDrive/RGELAN/data* and past them at your *MyDrive*.
+
 ## For the First Dataset
 Download the dataset from the provided link.
 
