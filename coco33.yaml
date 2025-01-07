@@ -1,0 +1,7 @@
+# Number of classes
+nc: 1  # You have one class: brain tumor
+
+names: ['Brain Tumor']
+
+train: /content/drive/MyDrive/brain-tumor/train
+val: /content/drive/MyDrive/brain-tumor/valid
