@@ -7,7 +7,7 @@ After downloading the repository from GitHub:
 1. Rename the folder to RGELAN (if it's not already named like that).
 2. Upload it to your Google Drive (MyDrive).
 
-Download both datasets from [IEEEDataPort](https://ieee-dataport.org/documents/brain-tumor-mri-dataset).
+Download the Br35H and figshare datasets from [IEEEDataPort](https://ieee-dataport.org/documents/brain-tumor-mri-dataset). From now on Br35H will be refered to as the First Dataset and figshare as the Second Datase.
 
 ## For the First Dataset
 Download the dataset from the provided link.
@@ -119,6 +119,26 @@ MyDrive/
     └── VAL/
         └── (879 image and 879 label files)
 ```
+## For the Third Dataset
+Download the dataset from the [Ultralytics]([https://ieee-dataport.org/documents/brain-tumor-mri-dataset](https://github.com/ultralytics/ultralytics/blob/main/ultralytics/cfg/datasets/brain-tumor.yaml))..
+Unzip the downloaded file.
+Rename the folder to brain-tumor if it is not already named that.
+The folder should look like this:
+```plaintext
+brain-tumor/
+├── train/
+│   ├── images/
+│   │   └── (893 image files)
+│   └── labels/
+│   │   └── (893 label files)
+├── valid/
+│   ├── images/
+│   │   └── (223 image files)
+│   └── labels/
+│   │   └── (223 label files)
+```
+Upload that in MyDrive.
+
 ### RCS-YOLO Preparation
 For the first dataset, results for both RCS-YOLO and RepVGG-GELAN were already available, so no further processing was needed. However, for this dataset, new results needed to be generated.
 To utilize RCS-YOLO, we used Ming Kang's repository, which can be accessed from [RCS-YOLO](https://github.com/mkang315/RCS-YOLO). After downloading the repository, rename the folder to RCS-YOLO (if it is not already named as such) and upload it to your Google Drive (MyDrive).
