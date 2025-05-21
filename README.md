@@ -1,6 +1,6 @@
 # RepSE-CBAMNet
-This is the source code for the paper titled "RepSE-CBAMNet: A Hybrid Attention-Enhanced CNN for Brain Tumor Detection
-RGELAN Repository"
+This is the source code for the paper titled "[RepSE-CBAMNet: A Hybrid Attention-Enhanced CNN for Brain Tumor Detection
+RGELAN]([https://ieee-dataport.org/documents/brain-tumor-mri-dataset](https://ebooks.iospress.nl/doi/10.3233/SHTI250401))" Repository
 
 ## Instructions
 After downloading the repository from GitHub:
